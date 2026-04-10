@@ -1,0 +1,24 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Simulate Deployment
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          echo "Starting deployment..."
+          echo "Using secret: $DEPLOY_KEY"
+          echo "Connecting to staging server..."
+          echo "Deploying app..."
+          echo "Deployment successful!"
